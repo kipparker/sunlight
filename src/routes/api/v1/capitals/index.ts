@@ -1,4 +1,4 @@
-import capitals from "./_capitals.js";
+import capitals from "./_capitals";
 import type {RequestHandler} from '@sveltejs/kit';
 
 export const get: RequestHandler =  async ({ params }) => {

@@ -1,7 +1,7 @@
 // routes/blog/[slug].json.js
 import type {RequestHandler} from '@sveltejs/kit';
 
-import capitals from "./_capitals.js";
+import capitals from "./_capitals";
 
 const lookup = new Map();
 
