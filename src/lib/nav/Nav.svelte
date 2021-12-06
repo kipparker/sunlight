@@ -2,7 +2,7 @@
     import type {Location, SunTimes} from '$lib/types'
     import dayjs from "dayjs";
     import LocationIcon from "./LocationIcon.svelte";
-    import duration from 'dayjs/plugin/duration';
+    import duration from 'dayjs/plugin/duration.js';
 
 	  dayjs.extend(duration);
 

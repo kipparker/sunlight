@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { SVG } from '@svgdotjs/svg.js';
 	import dayjs from 'dayjs';
-	import relativeTime from 'dayjs/plugin/relativeTime';
+	import relativeTime from 'dayjs/plugin/relativeTime.js';
 
 	import type { Datemarker, Location, LocationData, SunTimes } from '$lib/types';
 
