@@ -49,7 +49,7 @@
   </script>
   
   <nav>
-    <h1>Sunlight Circles</h1>
+    <h1>Sunlight</h1>
     <div class="buttonHolder"> <button on:click={getLocation}><LocationIcon size="28"/></button> </div>
     {#if locationName}
     <h2>{locationName} {#if sunTimes}{sunInfo(sunTimes)} (<strong>{sunDuration(sunTimes)})</strong>{/if}</h2>
