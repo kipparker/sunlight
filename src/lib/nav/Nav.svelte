@@ -1,7 +1,7 @@
 <script lang="ts">
     import type {Location, SunTimes} from '$lib/types'
     import dayjs from "dayjs";
-    import LocationIcon from "./LocationIcon.svelte";
+    import LocationButton from "./LocationButton.svelte";
     import duration from 'dayjs/plugin/duration.js';
 
 	  dayjs.extend(duration);
@@ -50,7 +50,7 @@
   
   <nav>
     <h1>Sunlight</h1>
-    <div class="buttonHolder"> <button on:click={getLocation}><LocationIcon size="28"/></button> </div>
+    <div class="buttonHolder"> <LocationButton getLocation={getLocation} size={"0.8em"}/> </div>
     {#if locationName}
     <h2>{locationName} {#if sunTimes}{sunInfo(sunTimes)} (<strong>{sunDuration(sunTimes)})</strong>{/if}</h2>
     {/if}
@@ -78,28 +78,17 @@
     }
     h2{
       padding: 0;
-      margin: 1.8em 1.5em;
+      margin: 1.7em 1.5em;
     }
     h1{
       font-size:2em;
-      margin:0.4em 0.3em 0.4em 0.4em;
+      margin: 0.3em 0.2em 0.3em 0.4em;
     }
 
     h2{
       font-size: 1em;
       font-weight:normal;
     }
-    button {
-        border: none;
-        border-radius: 5px;
-        color: #ffffff;
-        padding:0.6em 0em;
-        font-size: 16px;
-        cursor: pointer;
-        font-size:2em;
-        margin: 0;
-        background-color:transparent ;
-      }
-
+    
   </style>
   

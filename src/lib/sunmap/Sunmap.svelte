@@ -44,17 +44,22 @@
 	const equalDate = (d1: dayjs.Dayjs, d2: dayjs.Dayjs) =>
 		d1.month() == d2.month() && d1.date() == d2.date() && d1.year() == d2.year();
 	function drawSunlight(data: LocationData) {
+		let startColor:number[];
 		for (const day of data.days) {
 			// parse our values
 			const sunrise = dayjs(day.times.sunrise.substring(0, 19)); // I don't want the timezones
 			const sunset = dayjs(day.times.sunset.substring(0, 19));
 			const daylight = sunset.diff(sunrise, 'minute');
 			let daylightpercent = daylight / (24 * 60);
+			
 			if (equalDate(sunrise, today)) {
 				todaySunTimes = { sunrise, sunset };
+				startColor = [255,156,0];
+			}else {
+				startColor = [204, 204, 204];
 			}
 			const weightedColour = interpolateColor(
-				[204, 204, 204],
+				startColor,
 				[0, 0, 0],
 				daylightpercent * 2 - 0.5
 			);
@@ -89,7 +94,7 @@
 		datemarker = {
 			width: diameter,
 			x: today.date() * diameter - diameter / 2,
-			y: today.month() * diameter - diameter / 2
+			y: (today.month() + 1) * diameter - diameter / 2
 		};
 	}
 	function getSunTimes(details) {
@@ -177,7 +182,9 @@
 				cx={datemarker.x}
 				cy={datemarker.y}
 				r={datemarker.width / 2 - 1}
-				style="fill:rgba(0,0,0,0);stroke:gray;stroke-width:1;fill-opacity:0;stroke-opacity:1"
+				fill-opacity="0"
+				clip-path="circle()"
+				stroke="rgb(102,102,102)"
 			/>
 		</g>
 	</svg>
