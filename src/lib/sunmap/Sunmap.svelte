@@ -36,9 +36,10 @@
 		if (!location) {
 			return;
 		}
-		const url = `https://sunrise.fifthcontinent.io/api/v1/${location.latitude}/${location.longitude}?fromDate=2021-01-01&toDate=2021-12-31`;
+		const url = `https://sunrise.fifthcontinent.io/api/v1/${location.latitude}/${location.longitude}?fromDate=${today.year()}-01-01&toDate=${today.year()}-12-31`;
 		const res = await fetch(url);
 		locationData = await res.json();
+		console.log(locationData);
 		drawSunlight(locationData);
 	}
 	const equalDate = (d1: dayjs.Dayjs, d2: dayjs.Dayjs) =>
@@ -47,6 +48,7 @@
 		let startColor:number[];
 		for (const day of data.days) {
 			// parse our values
+			console.log("Day", day)
 			const sunrise = dayjs(day.times.sunrise.substring(0, 19)); // I don't want the timezones
 			const sunset = dayjs(day.times.sunset.substring(0, 19));
 			const daylight = sunset.diff(sunrise, 'minute');
@@ -98,6 +100,7 @@
 		};
 	}
 	function getSunTimes(details) {
+		console.log("Details", details)
 		const sunrise = dayjs(details.times.sunrise.substring(0, 19)); // I don't want the timezones
 		const sunset = dayjs(details.times.sunset.substring(0, 19));
 		return { sunrise, sunset };
